@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════
+   DESIGN TOKENS — Apple-inspired semantic colors
+   Dark = default, Light = .light class
+   ═══════════════════════════════════════ */
+
+:root {
+  /* Dark mode (default) */
+  --surface-primary: #0a0a0a;
+  --surface-secondary: #111111;
+  --surface-card: #161617;
+  --surface-nav: rgba(10,10,10,0.72);
+  --surface-nav-dark: rgba(0,0,0,0.88);
+  --surface-primary-alpha: rgba(10,10,10,0.92);
+  --surface-secondary-alpha: rgba(17,17,17,0.94);
+
+  --content-primary: #f5f5f7;
+  --content-secondary: #a1a1a6;
+  --content-tertiary: #6e6e73;
+
+  --accent: #2997ff;
+  --accent-hover: #64b5f6;
+  --btn-primary: #0071e3;
+  --btn-primary-hover: #0077ed;
+
+  --border-default: rgba(255,255,255,0.06);
+  --border-strong: #333336;
+
+  --tag-bg: rgba(255,255,255,0.08);
+  --tag-color: #a1a1a6;
+
+  --hero-glow: rgba(41,151,255,0.06);
+
+  --hero-headline: #f5f5f7;
+  --hero-overline: #2997ff;
+  --hero-subhead: #a1a1a6;
+}
+
+.light {
+  --surface-primary: #ffffff;
+  --surface-secondary: #f5f5f7;
+  --surface-card: #f5f5f7;
+  --surface-nav: rgba(251,251,253,0.72);
+  --surface-nav-dark: rgba(30,30,30,0.82);
+  --surface-primary-alpha: rgba(255,255,255,0.96);
+  --surface-secondary-alpha: rgba(245,245,247,0.97);
+
+  --content-primary: #1d1d1f;
+  --content-secondary: #86868b;
+  --content-tertiary: #6e6e73;
+
+  --accent: #0066cc;
+  --accent-hover: #0077ed;
+  --btn-primary: #0071e3;
+  --btn-primary-hover: #0077ed;
+
+  --border-default: rgba(0,0,0,0.06);
+  --border-strong: #d2d2d7;
+
+  --tag-bg: rgba(0,0,0,0.06);
+  --tag-color: #6e6e73;
+
+  --hero-glow: rgba(0,113,227,0.06);
+
+  --hero-headline: #0066cc;
+  --hero-overline: #1d1d1f;
+  --hero-subhead: #1d1d1f;
+}
+
+/* ═══════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--surface-primary);
+  color: var(--content-primary);
+  overflow-x: hidden;
+  transition: background 0.45s cubic-bezier(0.4,0,0.2,1),
+              color 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════ */
+
+.section-bg-primary { background: var(--surface-primary-alpha); }
+.section-bg-secondary { background: var(--surface-secondary-alpha); }
+.section-bg-dark { background: rgba(0,0,0,0.96); color: #f5f5f7; }
+
+/* Glassmorphism nav */
+.glass-nav {
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background: var(--surface-nav);
+  border-bottom: 0.5px solid var(--border-default);
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+.glass-nav.over-dark {
+  background: var(--surface-nav-dark);
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+.glass-nav.over-dark a,
+.glass-nav.over-dark button { color: #f5f5f7 !important; }
+
+/* Scroll-triggered animations */
+.reveal-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1),
+              transform 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-fade.visible { opacity: 1; transform: none; }
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.45s cubic-bezier(0.16,1,0.3,1),
+              transform 0.45s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-scale.visible { opacity: 1; transform: none; }
+
+/* About word reveal */
+.about-word {
+  color: var(--content-tertiary);
+  transition: color 0.3s ease;
+  display: inline;
+}
+.about-word.revealed { color: var(--content-primary); }
+
+/* Hide scrollbar utility */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* Scroll hint */
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(12px); opacity: 0.3; }
+}
