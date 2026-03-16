@@ -11,11 +11,11 @@ const config: PortfolioConfig = {
   // ── META ──
   meta: {
     name: 'Sai Sarthak Mohapatra',
-    title: 'Sai Sarthak Mohapatra — Senior Software Engineer',
-    description: 'Senior Software Engineer specializing in distributed systems, cloud-native SaaS platforms, and scalable frontend architecture.',
+    title: 'Sai Sarthak Mohapatra — Full Stack Developer',
+    description: 'Full Stack Developer specializing in distributed systems, cloud-native SaaS platforms, and scalable frontend architecture.',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://saisarthakmohapatra.dev',
     ogImage: '/og-image.png',
-    jobTitle: 'Senior Software Engineer',
+    jobTitle: 'Full Stack Developer',
   },
 
   // ── 3D CHARACTER ──
@@ -41,7 +41,7 @@ const config: PortfolioConfig = {
 
   // ── HERO ──
   hero: {
-    overline: 'Senior Software Engineer · AWS Certified · 3★ CodeChef',
+    overline: 'Full Stack Developer · AWS Certified · 3★ CodeChef',
     headline: 'Sai Sarthak Mohapatra.',
     subhead: 'Building scalable distributed systems, cloud-native SaaS platforms, and pixel-perfect experiences that feel effortless.',
     ctas: [
@@ -52,7 +52,7 @@ const config: PortfolioConfig = {
 
   // ── ABOUT ──
   about: {
-    text: "I'm a Senior Software Engineer with 4+ years of experience building scalable distributed systems and cloud-native SaaS platforms at SysCloud. I specialize in React, TypeScript, Node.js, GraphQL, PostgreSQL and AWS — from crafting pixel-perfect interfaces for enterprise backup applications to engineering high-throughput orchestration engines serving 10K+ global users. I've implemented secure authentication workflows with OAuth 2.0 and PKCE, built GenAI-assisted operational diagnostics using Claude APIs, designed JSON-driven UI architectures that ship without redeployment, and directed multi-region deployments across US and Tokyo infrastructure. I'm AWS Certified and a 3-star rated competitive programmer on CodeChef. I don't just write code — I architect systems that scale invisibly and deliver experiences people genuinely enjoy using.",
+    text: "I'm a Full Stack Developer with 4+ years of experience building scalable distributed systems and cloud-native SaaS platforms at SysCloud. I specialize in React, TypeScript, Node.js, GraphQL, PostgreSQL and AWS — from crafting pixel-perfect interfaces for enterprise backup applications to engineering high-throughput orchestration engines serving 10K+ global users. I've implemented secure authentication workflows with OAuth 2.0 and PKCE, built GenAI-assisted operational diagnostics using Claude APIs, designed JSON-driven UI architectures that ship without redeployment, and directed multi-region deployments across US and Tokyo infrastructure. I'm AWS Certified and a 3-star rated competitive programmer on CodeChef. I don't just write code — I architect systems that scale invisibly and deliver experiences people genuinely enjoy using.",
   },
 
   // ── SKILLS ──
