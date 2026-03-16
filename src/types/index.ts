@@ -29,6 +29,7 @@ export interface MetaConfig {
   description: string;
   url?: string;
   ogImage?: string;
+  jobTitle?: string;
 }
 
 // ── Nav ──

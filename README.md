@@ -18,7 +18,7 @@
 
 ## Demo
 
-![Portfolio Demo](public/assets/myportfolio.gif)
+![Portfolio Demo](public/assets/demo.gif)
 
 ---
 

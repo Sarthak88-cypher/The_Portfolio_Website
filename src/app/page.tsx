@@ -19,7 +19,7 @@ const jsonLd = {
   '@type': 'Person',
   name: config.meta.name,
   url: config.meta.url,
-  jobTitle: 'Senior Software Engineer',
+  jobTitle: config.meta.jobTitle || 'Software Engineer',
   description: config.meta.description,
   sameAs: [
     process.env.NEXT_PUBLIC_GITHUB_URL || 'https://github.com/Sarthak88-cypher',

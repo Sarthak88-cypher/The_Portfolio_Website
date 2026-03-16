@@ -14,6 +14,8 @@ const config: PortfolioConfig = {
     title: 'Sai Sarthak Mohapatra — Senior Software Engineer',
     description: 'Senior Software Engineer specializing in distributed systems, cloud-native SaaS platforms, and scalable frontend architecture.',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://saisarthakmohapatra.dev',
+    ogImage: '/og-image.png',
+    jobTitle: 'Senior Software Engineer',
   },
 
   // ── 3D CHARACTER ──
