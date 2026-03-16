@@ -12,17 +12,13 @@
 
 ## Live Demo
 
-> **[https://saisarthakmohapatra.dev](https://saisarthakmohapatra.dev)**
+> **[https://saisarthakmohapatra.site](https://saisarthakmohapatra.site)**
 
 ---
 
-## Screenshots
+## Demo
 
-| Dark Mode | Light Mode |
-|:---------:|:----------:|
-| ![Dark Mode Screenshot](docs/screenshots/dark.png) | ![Light Mode Screenshot](docs/screenshots/light.png) |
-
-> Replace the placeholder paths above with actual screenshots.
+![Portfolio Demo](public/assets/myportfolio.gif)
 
 ---
 
@@ -545,7 +541,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 **Sai Sarthak Mohapatra**
 
-- Website: [saisarthakmohapatra.dev](https://saisarthakmohapatra.dev)
+- Website: [saisarthakmohapatra.site](https://saisarthakmohapatra.site)
 - GitHub: [github.com/Sarthak88-cypher](https://github.com/Sarthak88-cypher)
 - LinkedIn: [linkedin.com/in/saisarthakmohapatra88](https://www.linkedin.com/in/saisarthakmohapatra88)
 - Email: saisarthakmohapatra@gmail.com
