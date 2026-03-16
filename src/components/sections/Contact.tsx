@@ -10,6 +10,8 @@ import { contactIcons } from '@/config/icons';
 function EmailCompose({ email, web3formsKey }: { email: string; web3formsKey?: string }) {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [attachment, setAttachment] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,20 +22,25 @@ function EmailCompose({ email, web3formsKey }: { email: string; web3formsKey?: s
     // If web3forms key is set, send via API
     if (web3formsKey) {
       try {
+        const formData = new FormData();
+        formData.append('access_key', web3formsKey);
+        formData.append('from_name', form.name);
+        formData.append('email', form.email);
+        formData.append('subject', form.subject || `Message from ${form.name}`);
+        formData.append('message', form.message);
+        if (attachment) {
+          formData.append('attachment', attachment);
+        }
+
         const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            access_key: web3formsKey,
-            from_name: form.name,
-            email: form.email,
-            subject: form.subject || `Message from ${form.name}`,
-            message: form.message,
-          }),
+          body: formData,
         });
         if (res.ok) {
           setStatus('sent');
           setForm({ name: '', email: '', subject: '', message: '' });
+          setAttachment(null);
+          if (fileInputRef.current) fileInputRef.current.value = '';
         } else {
           setStatus('error');
         }
@@ -59,7 +66,7 @@ function EmailCompose({ email, web3formsKey }: { email: string; web3formsKey?: s
   }, [status]);
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-[560px] mx-auto px-1">
+    <form onSubmit={handleSubmit} className="w-full max-w-[560px] lg:max-w-[640px] mx-auto px-1">
       {/* Email editor card */}
       <div
         className="rounded-2xl overflow-hidden transition-colors duration-300"
@@ -148,7 +155,7 @@ function EmailCompose({ email, web3formsKey }: { email: string; web3formsKey?: s
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
           required
-          rows={6}
+          rows={8}
           className="w-full bg-transparent text-sm outline-none resize-none px-4 sm:px-5 py-4 placeholder:text-[var(--content-tertiary)]"
           style={{ color: 'var(--content-primary)' }}
         />
@@ -159,9 +166,40 @@ function EmailCompose({ email, web3formsKey }: { email: string; web3formsKey?: s
           style={{ borderTop: '1px solid var(--border-default)' }}
         >
           <div className="flex items-center gap-2">
-            <svg className="w-4 h-4" style={{ color: 'var(--content-tertiary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
-            </svg>
+            <input
+              ref={fileInputRef}
+              type="file"
+              className="hidden"
+              accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg,.zip"
+              onChange={(e) => setAttachment(e.target.files?.[0] || null)}
+            />
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="flex items-center gap-1.5 bg-transparent border-none cursor-pointer transition-colors duration-200 hover:opacity-80"
+              title="Attach file"
+            >
+              <svg className="w-4 h-4" style={{ color: attachment ? 'var(--accent)' : 'var(--content-tertiary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
+              </svg>
+              {attachment && (
+                <span className="text-xs truncate max-w-[120px]" style={{ color: 'var(--accent)' }}>
+                  {attachment.name}
+                </span>
+              )}
+            </button>
+            {attachment && (
+              <button
+                type="button"
+                onClick={() => { setAttachment(null); if (fileInputRef.current) fileInputRef.current.value = ''; }}
+                className="bg-transparent border-none cursor-pointer"
+                title="Remove attachment"
+              >
+                <svg className="w-3.5 h-3.5" style={{ color: 'var(--content-tertiary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
           </div>
 
           <button
