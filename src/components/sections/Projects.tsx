@@ -89,7 +89,7 @@ function MoreTag({ count, hiddenTags, variant, onExpand }: { count: number; hidd
       </button>
       {hovered && (
         <div
-          className="absolute left-0 top-full mt-3 p-3 rounded-2xl pointer-events-none z-10"
+          className="absolute left-0 right-auto top-full mt-3 p-3 rounded-2xl pointer-events-none z-10 max-sm:left-auto max-sm:right-0"
           style={{
             background: 'var(--surface-card)',
             border: '1px solid var(--border-default)',
@@ -98,13 +98,13 @@ function MoreTag({ count, hiddenTags, variant, onExpand }: { count: number; hidd
             WebkitBackdropFilter: 'saturate(180%) blur(20px)',
             animation: 'tooltip-in 0.25s cubic-bezier(0.16,1,0.3,1)',
             width: 'fit-content',
-            minWidth: '200px',
-            maxWidth: '400px',
+            minWidth: 'min(200px, 70vw)',
+            maxWidth: 'min(400px, 85vw)',
           }}
         >
           {/* Arrow */}
           <div
-            className="absolute -top-1.5 left-5 w-3 h-3 rotate-45"
+            className="absolute -top-1.5 left-5 max-sm:left-auto max-sm:right-5 w-3 h-3 rotate-45"
             style={{
               background: 'var(--surface-card)',
               borderLeft: '1px solid var(--border-default)',
