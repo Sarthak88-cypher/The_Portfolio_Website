@@ -97,9 +97,9 @@ function MoreTag({ count, hiddenTags, variant, onExpand }: { count: number; hidd
             backdropFilter: 'saturate(180%) blur(20px)',
             WebkitBackdropFilter: 'saturate(180%) blur(20px)',
             animation: 'tooltip-in 0.25s cubic-bezier(0.16,1,0.3,1)',
-            width: 'max-content',
+            width: 'fit-content',
             minWidth: '200px',
-            maxWidth: '320px',
+            maxWidth: '400px',
           }}
         >
           {/* Arrow */}
