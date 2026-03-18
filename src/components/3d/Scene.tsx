@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, Suspense } from 'react';
+import { useRef, useEffect, useState, Suspense } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { useTheme } from 'next-themes';
 import { Group, Points, TextureLoader, SRGBColorSpace, DoubleSide, ACESFilmicToneMapping } from 'three';
@@ -124,7 +124,7 @@ function CharacterSprite({ config }: { config: Extract<CharacterConfig, { type: 
 // ═══════════════════════════════════════
 // PARTICLES
 // ═══════════════════════════════════════
-function Particles({ count = 80 }: { count?: number }) {
+function Particles({ count = 120 }: { count?: number }) {
   const ref = useRef<Points>(null);
   const { theme } = useTheme();
 
@@ -170,10 +170,10 @@ function Particles({ count = 80 }: { count?: number }) {
         <bufferAttribute attach="attributes-position" count={count} array={positions.current} itemSize={3} />
       </bufferGeometry>
       <pointsMaterial
-        size={0.03}
-        color={theme === 'light' ? '#8888aa' : '#ffffff'}
+        size={0.035}
+        color={theme === 'light' ? '#666688' : '#ffffff'}
         transparent
-        opacity={theme === 'light' ? 0.15 : 0.35}
+        opacity={theme === 'light' ? 0.35 : 0.4}
         sizeAttenuation
       />
     </points>
@@ -183,9 +183,22 @@ function Particles({ count = 80 }: { count?: number }) {
 // ═══════════════════════════════════════
 // MAIN SCENE
 // ═══════════════════════════════════════
+function SceneReady({ onReady }: { onReady: () => void }) {
+  useEffect(() => { onReady(); }, [onReady]);
+  return null;
+}
+
 export default function Scene3D({ characterConfig }: { characterConfig: CharacterConfig }) {
+  const [ready, setReady] = useState(false);
+
   return (
-    <div className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none">
+    <div
+      className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"
+      style={{
+        opacity: ready ? 1 : 0,
+        transition: 'opacity 0.8s cubic-bezier(0.4,0,0.2,1)',
+      }}
+    >
       <Canvas
         camera={{ position: [0, 1.2, 7], fov: 35 }}
         gl={{ alpha: true, antialias: true, toneMapping: ACESFilmicToneMapping, toneMappingExposure: 1.4 }}
@@ -197,10 +210,10 @@ export default function Scene3D({ characterConfig }: { characterConfig: Characte
         <directionalLight position={[0, 2, -8]} intensity={1.0} />
         <directionalLight position={[0, -5, 3]} intensity={0.3} color="#2997ff" />
 
-
         {characterConfig.type === 'image' && (
           <Suspense fallback={null}>
             <CharacterSprite config={characterConfig} />
+            <SceneReady onReady={() => setReady(true)} />
           </Suspense>
         )}
 

@@ -276,6 +276,8 @@ export default function Contact({ config }: { config: ContactConfig }) {
             <a
               key={link.href}
               href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               className={`inline-flex items-center gap-2 text-sm font-medium py-3 px-6 rounded-full no-underline transition-all duration-300 hover:scale-[1.04] ${
                 link.variant === 'primary'
                   ? 'bg-[var(--btn-primary)] text-white hover:bg-[var(--btn-primary-hover)]'

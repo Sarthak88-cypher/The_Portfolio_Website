@@ -13,7 +13,9 @@ export default function About({ config }: { config: AboutConfig }) {
     if (!section || !textEl) return;
 
     const words = config.text.trim().split(/\s+/);
-    textEl.innerHTML = words.map((w) => `<span class="about-word">${w}</span>`).join(' ');
+    textEl.innerHTML = words
+      .map((w, i) => `<span class="about-word" style="transition-delay:${i * 15}ms">${w}</span>`)
+      .join(' ');
     const wordEls = textEl.querySelectorAll('.about-word');
 
     const update = () => {
@@ -31,8 +33,22 @@ export default function About({ config }: { config: AboutConfig }) {
 
   return (
     <section ref={sectionRef} className="relative z-[1] section-bg-secondary py-section px-6 transition-colors duration-[450ms]" id="about">
-      <div className="max-w-[780px] mx-auto py-20">
-        <p ref={textRef} className="text-[clamp(24px,3.5vw,36px)] font-semibold leading-[1.4] tracking-subhead">
+      <div className="max-w-[680px] mx-auto py-20">
+        {/* Section label */}
+        <div className="flex items-center gap-4 mb-8">
+          <span
+            className="text-xs font-semibold tracking-[0.2em] uppercase"
+            style={{ color: 'var(--accent)' }}
+          >
+            About
+          </span>
+          <span className="flex-1 h-px" style={{ background: 'var(--border-strong)' }} />
+        </div>
+
+        <p
+          ref={textRef}
+          className="text-[clamp(20px,2.8vw,28px)] font-medium leading-[1.5] tracking-subhead"
+        >
           {config.text}
         </p>
       </div>

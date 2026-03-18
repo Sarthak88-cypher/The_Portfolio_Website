@@ -21,7 +21,7 @@ const config: PortfolioConfig = {
   // ── 3D CHARACTER ──
   character: {
     type: 'image',
-    src: '/assets/images/character.png',
+    src: '/assets/images/character.webp',
     width: 5,
     height: 3,
   },
@@ -60,104 +60,122 @@ const config: PortfolioConfig = {
     label: 'Expertise',
     headline: 'Technologies I work with.',
     description: 'Carefully chosen tools and frameworks that let me move fast without compromising quality.',
-    items: [
-      // Languages
-      { name: 'TypeScript', icon: 'typescript' },
-      { name: 'JavaScript', icon: 'js' },
-      { name: 'HTML5', icon: 'html5' },
-      { name: 'Python', icon: 'python' },
-      { name: 'Bash', icon: 'bash' },
-      { name: 'PowerShell', icon: 'powershell' },
-      { name: 'GraphQL', icon: 'graphql' },
-      { name: 'MySQL', icon: 'mysql' },
-      { name: 'CSS3', icon: 'css3' },
-
-      // Frontend
-      { name: 'Next.js', icon: 'nextjs2' },
-      { name: 'React', icon: 'react' },
-      { name: 'React Native', icon: 'reactnative' },
-      { name: 'React Router', icon: 'reactrouter' },
-      { name: 'React Query', icon: 'reactquery' },
-      { name: 'Redux', icon: 'redux' },
-      { name: 'MUI', icon: 'materialui' },
-      { name: 'Semantic UI', icon: 'semanticui' },
-      { name: 'Tailwind CSS', icon: 'tailwindcss' },
-      { name: 'Vite', icon: 'vitejs' },
-      { name: 'Esbuild', icon: 'esbuild' },
-      { name: 'Expo', icon: 'expo' },
-      { name: 'Zustand', icon: 'zustand' },
-
-      // Backend
-      { name: 'Node.js', icon: 'nodejs' },
-      { name: 'Express.js', icon: 'expressjs' },
-      { name: 'NestJS', icon: 'nestjs' },
-      { name: 'Prisma', icon: 'prisma' },
-      { name: 'Nginx', icon: 'nginx' },
-      { name: 'Zod', icon: 'zod' },
-
-      // Databases
-      { name: 'PostgreSQL', icon: 'postgresql' },
-      { name: 'MongoDB', icon: 'mongodb' },
-      { name: 'Mongoose', icon: 'mongoose' },
-      { name: 'Supabase', icon: 'supabase' },
-      { name: 'Redis', icon: 'redis' },
-      { name: 'Firebase', icon: 'firebase' },
-      { name: 'Neon', icon: 'neon' },
-
-      // AWS
-      { name: 'AWS', icon: 'aws' },
-      { name: 'AWS Lambda', icon: 'amznwebserv' },
-      { name: 'EC2', icon: 'ec2' },
-
-      // Cloud & DevOps
-      { name: 'Azure', icon: 'azure' },
-      { name: 'Azure AI', icon: 'azureai' },
-      { name: 'Google Cloud', icon: 'gcloud' },
-      { name: 'Render', icon: 'render' },
-
-      // AI & GenAI
-      { name: 'Anthropic', icon: 'anthropic' },
-      { name: 'Claude', icon: 'claude' },
-      { name: 'OpenAI', icon: 'openai' },
-      { name: 'Gemini', icon: 'gemini' },
-      { name: 'GitHub Copilot', icon: 'copilotgithub' },
-      { name: 'Hugging Face', icon: 'huggingface' },
-      { name: 'LangChain', icon: 'langchain' },
-      { name: 'Ollama', icon: 'ollama' },
-
-      // Auth & Security
-      { name: 'OAuth 2.0', icon: 'oauth' },
-      { name: 'Passport.js', icon: 'passport' },
-
-      // APIs & Services
-      { name: 'Resend', icon: 'resend' },
-      { name: 'Twilio', icon: 'twilio' },
-
-      // Testing
-      { name: 'Playwright', icon: 'playwright' },
-      { name: 'Cypress', icon: 'cypress' },
-      { name: 'Vitest', icon: 'vitest' },
-      { name: 'Jest', icon: 'jest' },
-
-      // DevOps & Tooling
-      { name: 'Docker', icon: 'docker' },
-      { name: 'Git', icon: 'git' },
-      { name: 'GitHub', icon: 'github' },
-      { name: 'ESLint', icon: 'eslint' },
-      { name: 'Prettier', icon: 'prettier' },
-      { name: 'NPM', icon: 'npm' },
-      { name: 'SonarQube', icon: 'sonarqube' },
-      { name: 'Prometheus', icon: 'prometheus' },
-      { name: 'Puppeteer', icon: 'puppeteer' },
-      { name: 'PNPM', icon: 'pnpm' },
-
-      // Design & Ops
-      { name: 'Figma', icon: 'figma' },
-      { name: 'Canva', icon: 'canva' },
-      { name: 'Grafana', icon: 'grafana' },
-      { name: 'Jira', icon: 'jira' },
-      { name: 'Postman', icon: 'postman' },
-      { name: 'Swagger', icon: 'swagger' },
+    items: [], // flat list kept for compat
+    groups: [
+      {
+        label: 'Languages',
+        items: [
+          { name: 'TypeScript', icon: 'typescript' },
+          { name: 'JavaScript', icon: 'js' },
+          { name: 'Python', icon: 'python' },
+          { name: 'GraphQL', icon: 'graphql' },
+          { name: 'HTML5', icon: 'html5' },
+          { name: 'CSS3', icon: 'css3' },
+          { name: 'Bash', icon: 'bash' },
+          { name: 'PowerShell', icon: 'powershell' },
+          { name: 'MySQL', icon: 'mysql' },
+        ],
+      },
+      {
+        label: 'Frontend',
+        items: [
+          { name: 'Next.js', icon: 'nextjs2' },
+          { name: 'React', icon: 'react' },
+          { name: 'React Native', icon: 'reactnative' },
+          { name: 'React Query', icon: 'reactquery' },
+          { name: 'Redux', icon: 'redux' },
+          { name: 'Zustand', icon: 'zustand' },
+          { name: 'Tailwind CSS', icon: 'tailwindcss' },
+          { name: 'MUI', icon: 'materialui' },
+          { name: 'Semantic UI', icon: 'semanticui' },
+          { name: 'React Router', icon: 'reactrouter' },
+          { name: 'Vite', icon: 'vitejs' },
+          { name: 'Esbuild', icon: 'esbuild' },
+          { name: 'Expo', icon: 'expo' },
+        ],
+      },
+      {
+        label: 'Backend & Data',
+        items: [
+          { name: 'Node.js', icon: 'nodejs' },
+          { name: 'Express.js', icon: 'expressjs' },
+          { name: 'NestJS', icon: 'nestjs' },
+          { name: 'Prisma', icon: 'prisma' },
+          { name: 'PostgreSQL', icon: 'postgresql' },
+          { name: 'MongoDB', icon: 'mongodb' },
+          { name: 'Mongoose', icon: 'mongoose' },
+          { name: 'Redis', icon: 'redis' },
+          { name: 'Supabase', icon: 'supabase' },
+          { name: 'Firebase', icon: 'firebase' },
+          { name: 'Neon', icon: 'neon' },
+          { name: 'Nginx', icon: 'nginx' },
+          { name: 'Zod', icon: 'zod' },
+        ],
+      },
+      {
+        label: 'Cloud & Infrastructure',
+        items: [
+          { name: 'AWS', icon: 'aws' },
+          { name: 'AWS Lambda', icon: 'amznwebserv' },
+          { name: 'EC2', icon: 'ec2' },
+          { name: 'Azure', icon: 'azure' },
+          { name: 'Azure AI', icon: 'azureai' },
+          { name: 'Google Cloud', icon: 'gcloud' },
+          { name: 'Docker', icon: 'docker' },
+          { name: 'Render', icon: 'render' },
+        ],
+      },
+      {
+        label: 'AI & GenAI',
+        items: [
+          { name: 'Claude', icon: 'claude' },
+          { name: 'Anthropic', icon: 'anthropic' },
+          { name: 'OpenAI', icon: 'openai' },
+          { name: 'Gemini', icon: 'gemini' },
+          { name: 'LangChain', icon: 'langchain' },
+          { name: 'Hugging Face', icon: 'huggingface' },
+          { name: 'Ollama', icon: 'ollama' },
+          { name: 'GitHub Copilot', icon: 'copilotgithub' },
+        ],
+      },
+      {
+        label: 'Testing',
+        items: [
+          { name: 'Playwright', icon: 'playwright' },
+          { name: 'Puppeteer', icon: 'puppeteer' },
+          { name: 'Cypress', icon: 'cypress' },
+          { name: 'Vitest', icon: 'vitest' },
+          { name: 'Jest', icon: 'jest' },
+        ],
+      },
+      {
+        label: 'DevOps & Tooling',
+        items: [
+          { name: 'Git', icon: 'git' },
+          { name: 'GitHub', icon: 'github' },
+          { name: 'ESLint', icon: 'eslint' },
+          { name: 'Prettier', icon: 'prettier' },
+          { name: 'NPM', icon: 'npm' },
+          { name: 'PNPM', icon: 'pnpm' },
+          { name: 'SonarQube', icon: 'sonarqube' },
+          { name: 'Prometheus', icon: 'prometheus' },
+          { name: 'Grafana', icon: 'grafana' },
+          { name: 'Resend', icon: 'resend' },
+          { name: 'Twilio', icon: 'twilio' },
+          { name: 'OAuth 2.0', icon: 'oauth' },
+          { name: 'Passport.js', icon: 'passport' },
+        ],
+      },
+      {
+        label: 'Design & Workflow',
+        items: [
+          { name: 'Figma', icon: 'figma' },
+          { name: 'Postman', icon: 'postman' },
+          { name: 'Swagger', icon: 'swagger' },
+          { name: 'Jira', icon: 'jira' },
+          { name: 'Canva', icon: 'canva' },
+        ],
+      },
     ],
   },
 
@@ -172,6 +190,7 @@ const config: PortfolioConfig = {
         description: 'Full-stack AI-powered meeting intelligence platform built across three microservices. Next.js 16 frontend with React 19 Compiler, MUI v7, TanStack Query v5, and NextAuth/Supabase auth. Offline-first IndexedDB upload queue with exponential backoff and cross-session recovery. Express.js backend with Prisma/Neon PostgreSQL, BullMQ/Redis job processing, and dual AI integrations (Claude + OpenAI). Autonomous meeting bot using rebrowser-playwright for stealth Google Meet recording with state-machine lifecycle, three-layer participant detection, grace period auto-leave, and two-phase Supabase Storage upload with crash recovery. Multi-cloud storage (AWS S3, Azure Blob, Supabase), Prometheus metrics, and fully containerized with Docker Compose.',
         tags: ['Next.js', 'React 19', 'Express.js', 'Prisma', 'PostgreSQL', 'Playwright', 'Claude API', 'OpenAI', 'BullMQ', 'Docker'],
         featured: true,
+        category: 'personal',
       },
       {
         title: 'Backup Jobs 3.0',
@@ -179,6 +198,7 @@ const config: PortfolioConfig = {
         tags: ['Node.js', 'GraphQL', 'PostgreSQL', 'AWS', 'Claude API'],
         gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
         icon: '⚡',
+        category: 'featured',
       },
       {
         title: 'Product Design Framework',
@@ -186,6 +206,7 @@ const config: PortfolioConfig = {
         tags: ['React', 'TypeScript', 'Material UI', 'Design Systems'],
         gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
         icon: '🎨',
+        category: 'featured',
       },
       {
         title: 'Enterprise Security & Compliance Suite',
@@ -193,6 +214,7 @@ const config: PortfolioConfig = {
         tags: ['Node.js', 'AWS Lambda', 'OAuth 2.0', 'PostgreSQL'],
         gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
         icon: '🛡️',
+        category: 'featured',
       },
       {
         title: 'ScreenAppBot — MeetArc',
@@ -201,6 +223,7 @@ const config: PortfolioConfig = {
         link: 'https://github.com/Sarthak88-cypher/ScreenAppBot-MeetArc',
         gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
         icon: '📹',
+        category: 'personal',
       },
       {
         title: 'Food Coup Mania',
@@ -209,6 +232,7 @@ const config: PortfolioConfig = {
         link: 'https://github.com/Sarthak88-cypher/Food-Coup-Mania',
         gradient: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
         icon: '🍔',
+        category: 'personal',
       },
       {
         title: 'FoodInesta Restaurant App',
@@ -217,6 +241,7 @@ const config: PortfolioConfig = {
         link: 'https://github.com/Sarthak88-cypher/FoodInesta_Restaurant_React_App',
         gradient: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
         icon: '🍕',
+        category: 'personal',
       },
       {
         title: 'Plane Shooter 2D Game',
@@ -225,6 +250,7 @@ const config: PortfolioConfig = {
         link: 'https://github.com/Sarthak88-cypher/Plane_Shooter_2D_Game',
         gradient: 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)',
         icon: '✈️',
+        category: 'personal',
       },
       {
         title: 'Quiz Game — Python',
@@ -233,6 +259,7 @@ const config: PortfolioConfig = {
         link: 'https://github.com/Sarthak88-cypher/Quiz_Game__Python',
         gradient: 'linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)',
         icon: '❓',
+        category: 'personal',
       },
       {
         title: 'LeetCode & CodeChef Practice',
@@ -241,6 +268,7 @@ const config: PortfolioConfig = {
         link: 'https://github.com/Sarthak88-cypher/CodeChef_Beginner_to_Hard_PRACTICE',
         gradient: 'linear-gradient(135deg, #fddb92 0%, #d1fdff 100%)',
         icon: '🧩',
+        category: 'personal',
       },
     ],
   },
@@ -253,7 +281,10 @@ const config: PortfolioConfig = {
     items: [
       {
         role: 'Senior Software Engineer',
-        company: 'Syscloud Technologies',
+        company: 'SysCloud Technologies',
+        companyUrl: 'https://www.syscloud.com',
+        companyLogo: '/assets/images/syscloud-logo.png',
+        showLogo: false,
         period: 'May 2025 – Present',
         location: 'Hyderabad, India',
         description: 'Leading architecture and development of distributed orchestration systems, AI-powered diagnostics, and multi-region enterprise SaaS infrastructure.',
@@ -269,7 +300,10 @@ const config: PortfolioConfig = {
       },
       {
         role: 'Software Engineer',
-        company: 'Syscloud Technologies',
+        company: 'SysCloud Technologies',
+        companyUrl: 'https://www.syscloud.com',
+        companyLogo: '/assets/images/syscloud-logo.png',
+        showLogo: false,
         period: 'Sep 2021 – Apr 2025',
         location: 'Hyderabad, India',
         description: 'Built scalable frontend architecture, secure authentication systems, and high-throughput GraphQL APIs for enterprise SaaS backup products.',

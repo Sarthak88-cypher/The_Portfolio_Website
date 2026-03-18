@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import type { ExperienceConfig } from '@/types';
 
 export default function Experience({ config }: { config: ExperienceConfig }) {
@@ -29,10 +30,44 @@ export default function Experience({ config }: { config: ExperienceConfig }) {
                 <span className="text-lg font-semibold text-[#f5f5f7]">{item.role}</span>
                 <span className="text-sm text-[#86868b]">{item.period}</span>
               </div>
-              <div className="flex items-center gap-2 mt-1">
-                <span className="text-[15px] text-accent">{item.company}</span>
+              <div className="flex items-center gap-2.5 mt-1.5">
+                {item.companyUrl ? (
+                  <a
+                    href={item.companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 cursor-pointer transition-opacity duration-200 hover:opacity-80 no-underline"
+                  >
+                    {item.companyLogo && item.showLogo !== false && (
+                      <Image
+                        src={item.companyLogo}
+                        alt={item.company}
+                        width={72}
+                        height={24}
+                        className="object-contain shrink-0"
+                        style={{ filter: 'brightness(0) invert(1)', opacity: 0.75 }}
+                      />
+                    )}
+                    <span className="text-[15px] text-accent hover:underline">{item.company}</span>
+                  </a>
+                ) : (
+                  <span className="inline-flex items-center gap-2.5">
+                    {item.companyLogo && item.showLogo !== false && (
+                      <Image
+                        src={item.companyLogo}
+                        alt={item.company}
+                        width={72}
+                        height={24}
+                        className="object-contain shrink-0"
+                        style={{ filter: 'brightness(0) invert(1)', opacity: 0.75 }}
+                      />
+                    )}
+                    <span className="text-[15px] text-accent">{item.company}</span>
+                  </span>
+                )}
                 {item.location && <span className="text-sm text-[#6e6e73]">· {item.location}</span>}
               </div>
+
               <p className="text-sm text-[#a1a1a6] leading-relaxed mt-3">{item.description}</p>
               {item.highlights && item.highlights.length > 0 && (
                 <ul className="mt-4 flex flex-col gap-2.5">

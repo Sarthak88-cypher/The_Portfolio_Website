@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import type { NavConfig } from '@/types';
 
 interface NavProps {
@@ -13,6 +13,8 @@ export default function Nav({ config }: NavProps) {
   const [mounted, setMounted] = useState(false);
   const [overDark, setOverDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const [overlay, setOverlay] = useState<{ x: number; y: number; color: string } | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -44,8 +46,60 @@ export default function Nav({ config }: NavProps) {
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
+  const handleThemeToggle = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    const color = nextTheme === 'dark' ? '#0a0a0a' : '#ffffff';
+
+    if (toggleRef.current) {
+      const rect = toggleRef.current.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      setOverlay({ x, y, color });
+
+      // Apply theme after overlay starts expanding
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          setTheme(nextTheme);
+        }, 300);
+      });
+
+      // Remove overlay after animation completes
+      setTimeout(() => {
+        setOverlay(null);
+      }, 1450);
+    } else {
+      setTheme(nextTheme);
+    }
+  };
+
+  // Calculate the max radius needed to cover the whole screen
+  const getMaxRadius = (x: number, y: number) => {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    return Math.ceil(Math.sqrt(
+      Math.max(x, w - x) ** 2 + Math.max(y, h - y) ** 2
+    ));
+  };
+
   return (
     <>
+      {/* Theme transition overlay */}
+      {overlay && (
+        <div
+          className="fixed inset-0 z-[999] pointer-events-none"
+          style={{
+            background: overlay.color,
+            clipPath: `circle(${getMaxRadius(overlay.x, overlay.y)}px at ${overlay.x}px ${overlay.y}px)`,
+            backdropFilter: 'blur(40px) saturate(200%) brightness(1.1)',
+            WebkitBackdropFilter: 'blur(40px) saturate(200%) brightness(1.1)',
+            animation: 'theme-wipe 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            '--wipe-x': `${overlay.x}px`,
+            '--wipe-y': `${overlay.y}px`,
+            '--wipe-r': `${getMaxRadius(overlay.x, overlay.y)}px`,
+          } as React.CSSProperties}
+        />
+      )}
+
       <nav className={`glass-nav fixed top-0 left-0 right-0 z-[100] h-nav ${overDark ? 'over-dark' : ''}`}>
         <div className="max-w-content mx-auto h-full px-[22px] flex items-center justify-between">
           <a href="#hero" className="text-lg font-semibold text-content-primary no-underline tracking-subhead transition-colors duration-[450ms]">
@@ -66,7 +120,8 @@ export default function Nav({ config }: NavProps) {
           <div className="flex items-center gap-3">
             {/* Theme toggle */}
             <button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              ref={toggleRef}
+              onClick={handleThemeToggle}
               className="bg-transparent border-none cursor-pointer text-content-secondary hover:text-content-primary w-[18px] h-[18px] transition-colors duration-200"
               aria-label="Toggle theme"
             >

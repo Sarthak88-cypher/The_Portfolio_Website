@@ -48,7 +48,7 @@ export default function Hero({ config }: { config: HeroConfig }) {
           <h1 id="hero-heading" className="text-[clamp(36px,6vw,76px)] font-bold tracking-headline leading-[1.05] md:whitespace-nowrap" style={{ color: 'var(--hero-headline)', textShadow: '0 2px 30px rgba(0,0,0,0.08)' }}>
             {config.headline}
           </h1>
-          <p className="text-[19px] leading-relaxed mt-5 max-w-[520px] mx-auto" style={{ color: 'var(--hero-subhead)', textShadow: '0 1px 16px rgba(0,0,0,0.06)' }}>
+          <p className="text-[19px] leading-relaxed mt-5 max-w-[520px] mx-auto" style={{ color: 'var(--hero-subhead)', textShadow: '0 2px 24px var(--surface-primary), 0 0 60px var(--surface-primary), 0 0 80px var(--surface-primary)' }}>
             {config.subhead}
           </p>
           <div className="mt-9 flex gap-8 justify-center flex-wrap">

@@ -57,11 +57,17 @@ export interface SkillItem {
   icon: string; // tech-stack-icons name (e.g. 'react', 'nextjs', 'typescript')
 }
 
+export interface SkillGroup {
+  label: string;
+  items: SkillItem[];
+}
+
 export interface SkillsConfig {
   label: string;
   headline: string;
   description: string;
-  items: SkillItem[];
+  items: SkillItem[]; // kept for backwards compat
+  groups: SkillGroup[];
 }
 
 // ── Projects ──
@@ -73,6 +79,7 @@ export interface ProjectItem {
   featured?: boolean;
   gradient?: string; // CSS gradient for card header art
   icon?: string; // emoji or symbol for card header
+  category?: 'featured' | 'personal'; // 'featured' = built at company, 'personal' = side projects
 }
 
 export interface ProjectsConfig {
@@ -86,6 +93,9 @@ export interface ProjectsConfig {
 export interface ExperienceItem {
   role: string;
   company: string;
+  companyUrl?: string;
+  companyLogo?: string;
+  showLogo?: boolean;
   period: string;
   location?: string;
   description: string;

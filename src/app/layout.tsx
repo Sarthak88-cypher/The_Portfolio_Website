@@ -50,6 +50,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <link rel="preload" href="/assets/images/character.webp" as="image" type="image/webp" />
+      </head>
       <body className="font-sans">
         <ThemeProvider>
           {children}
