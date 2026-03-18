@@ -327,7 +327,7 @@ const config: PortfolioConfig = {
       {
         name: 'AWS Certified Developer – Associate',
         issuer: 'Amazon Web Services',
-        year: '2024',
+        year: '2025',
         link: process.env.NEXT_PUBLIC_AWS_CERT_URL || 'https://www.credly.com/badges/a93a8a96-d414-4b78-971b-f8b7b86e8911/public_url',
       },
     ],
