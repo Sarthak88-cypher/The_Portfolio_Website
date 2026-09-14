@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    remotePatterns: [{ hostname: 'logo.clearbit.com' }],
+  },
   transpilePackages: ['three', 'tech-stack-icons'],
   webpack: (config) => {
     config.module.rules.push({
@@ -25,7 +28,7 @@ const nextConfig = {
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
-              "img-src 'self' data: blob:",
+              "img-src 'self' data: blob: https://logo.clearbit.com",
               "connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://region1.google-analytics.com",
               "frame-ancestors 'none'",
             ].join('; '),

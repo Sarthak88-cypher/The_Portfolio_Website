@@ -11,11 +11,11 @@ const config: PortfolioConfig = {
   // ── META ──
   meta: {
     name: 'Sai Sarthak Mohapatra',
-    title: 'Sai Sarthak Mohapatra — Full Stack Developer',
-    description: 'Full Stack Developer specializing in distributed systems, cloud-native SaaS platforms, and scalable frontend architecture.',
+    title: 'Sai Sarthak Mohapatra — AI Engineer',
+    description: 'AI Engineer specializing in LLM orchestration, deal intelligence platforms, and cloud-native SaaS architecture.',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://saisarthakmohapatra.dev',
     ogImage: '/og-image.png',
-    jobTitle: 'Full Stack Developer',
+    jobTitle: 'AI Engineer',
   },
 
   // ── 3D CHARACTER ──
@@ -41,9 +41,9 @@ const config: PortfolioConfig = {
 
   // ── HERO ──
   hero: {
-    overline: 'Full Stack Developer · AWS Certified · 3★ CodeChef',
+    overline: 'AI Engineer · AWS Certified · 3★ CodeChef',
     headline: 'Sai Sarthak Mohapatra.',
-    subhead: 'Building scalable distributed systems, cloud-native SaaS platforms, and pixel-perfect experiences that feel effortless.',
+    subhead: 'Building LLM-powered products and distributed systems at the intersection of AI and enterprise SaaS.',
     ctas: [
       { label: 'See my work', href: '#projects' },
       { label: 'Get in touch', href: '#contact' },
@@ -52,7 +52,7 @@ const config: PortfolioConfig = {
 
   // ── ABOUT ──
   about: {
-    text: "I'm a Full Stack Developer with 4+ years of experience building scalable distributed systems and cloud-native SaaS platforms at SysCloud. I specialize in React, TypeScript, Node.js, GraphQL, PostgreSQL and AWS — from crafting pixel-perfect interfaces for enterprise backup applications to engineering high-throughput orchestration engines serving 10K+ global users. I've implemented secure authentication workflows with OAuth 2.0 and PKCE, built GenAI-assisted operational diagnostics using Claude APIs, designed JSON-driven UI architectures that ship without redeployment, and directed multi-region deployments across US and Tokyo infrastructure. I'm AWS Certified and a 3-star rated competitive programmer on CodeChef. I don't just write code — I architect systems that scale invisibly and deliver experiences people genuinely enjoy using.",
+    text: "I'm an AI Engineer with 5+ years of experience building distributed systems, cloud-native SaaS platforms, and LLM-powered products. Currently at Showpad, I'm architecting the Deal Intelligence platform — unifying CRM, Gong, Zoom, and Teams data into deal graphs that deliver real-time AI insights and in-call assistance to enterprise sales teams. I specialize in multi-agent LLM orchestration, RAG pipelines, AWS serverless infrastructure, React, TypeScript, Node.js, and GraphQL. Previously at SysCloud, I led backend architecture for enterprise backup systems serving 10K+ global users, built GenAI-assisted diagnostics with Claude APIs, and engineered secure OAuth 2.0 authentication workflows. I'm AWS Certified and a 3-star competitive programmer on CodeChef. I don't just write code — I architect systems that scale invisibly and deliver experiences people genuinely enjoy using.",
   },
 
   // ── SKILLS ──
@@ -97,6 +97,8 @@ const config: PortfolioConfig = {
       {
         label: 'Backend & Data',
         items: [
+          { name: 'Neo4j', icon: 'neo4j' },
+          { name: 'Amazon Neptune', icon: 'amznwebserv' },
           { name: 'Node.js', icon: 'nodejs' },
           { name: 'Express.js', icon: 'expressjs' },
           { name: 'NestJS', icon: 'nestjs' },
@@ -153,6 +155,7 @@ const config: PortfolioConfig = {
         items: [
           { name: 'Git', icon: 'git' },
           { name: 'GitHub', icon: 'github' },
+          { name: 'GitLab', icon: 'gitlab' },
           { name: 'ESLint', icon: 'eslint' },
           { name: 'Prettier', icon: 'prettier' },
           { name: 'NPM', icon: 'npm' },
@@ -280,12 +283,30 @@ const config: PortfolioConfig = {
     description: 'Building scalable platforms and leading cross-functional delivery at enterprise scale.',
     items: [
       {
+        role: 'AI Engineer',
+        company: 'Showpad',
+        companyUrl: 'https://www.showpad.com',
+        companyLogo: 'https://logo.clearbit.com/showpad.com',
+        showLogo: false,
+        period: 'Jul 2026 – Present',
+        location: 'Pune, India',
+        description: 'Building AI-powered deal intelligence infrastructure at Showpad, a leading sales enablement platform — unifying revenue signals across CRM, communication, and conversation tools to deliver real-time insights at the point of sale.',
+        highlights: [
+          'Architecting Showpad\'s Deal Intelligence platform — building a multi-source ingestion pipeline that unifies CRM data (Salesforce, HubSpot), meeting transcripts (Gong, Zoom), and collaboration signals (Microsoft Teams) into a normalized event stream using AWS EventBridge, SQS, and Lambda',
+          'Designing deal graph data models — representing accounts, contacts, activities, and deal stages as nodes/edges to enable traversal-based risk scoring, stakeholder influence mapping, and engagement gap detection',
+          'Building real-time AI assistance during live sales calls — LLM inference pipelines with streaming output, RAG over deal history and CRM context, and tool-use agents that surface battle cards, pricing objections, and next-best-action recommendations mid-conversation',
+          'Engineering LLM orchestration layers using multi-agent architectures (planner + specialist agents) that synthesize signals from Gong conversation intelligence, CRM activity logs, and calendar metadata into structured deal narratives and forecast confidence scores',
+          'Developing AI insight APIs consumed by Showpad\'s frontend — webhook-driven deal health updates, anomaly alerts (deal slippage, champion change, competitor mentions), and conversational analytics dashboards',
+          'Integrating with Showpad Genie Agent Studio and MCP server infrastructure to expose deal intelligence as governed, queryable context for downstream AI agents across the Revenue Effectiveness Operating System',
+        ],
+      },
+      {
         role: 'Senior Software Engineer',
         company: 'SysCloud Technologies',
         companyUrl: 'https://www.syscloud.com',
         companyLogo: '/assets/images/syscloud-logo.png',
         showLogo: false,
-        period: 'May 2025 – Present',
+        period: 'May 2025 – Jun 2026',
         location: 'Hyderabad, India',
         description: 'Leading architecture and development of distributed orchestration systems, AI-powered diagnostics, and multi-region enterprise SaaS infrastructure.',
         highlights: [
