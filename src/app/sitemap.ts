@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import config from '@/config/portfolio';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = config.meta.url || 'https://saisarthakmohapatra.dev';
+  const baseUrl = config.meta.url || 'https://www.saisarthakmohapatra.site';
 
   return [
     {
