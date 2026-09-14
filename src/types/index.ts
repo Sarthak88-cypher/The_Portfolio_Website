@@ -30,6 +30,11 @@ export interface MetaConfig {
   url?: string;
   ogImage?: string;
   jobTitle?: string;
+  keywords?: string[];
+  author?: string;
+  twitterHandle?: string;
+  github?: string;
+  linkedin?: string;
 }
 
 // ── Nav ──

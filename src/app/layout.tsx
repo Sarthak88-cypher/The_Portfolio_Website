@@ -13,14 +13,19 @@ const inter = Inter({
   display: 'swap',
 });
 
+const siteUrl = config.meta.url || 'https://www.saisarthakmohapatra.site';
+
 export const metadata: Metadata = {
   title: config.meta.title,
   description: config.meta.description,
-  metadataBase: new URL(config.meta.url || 'https://saisarthakmohapatra.dev'),
+  metadataBase: new URL(siteUrl),
+  keywords: config.meta.keywords,
+  authors: config.meta.author ? [{ name: config.meta.author, url: siteUrl }] : undefined,
+  creator: config.meta.author,
   openGraph: {
     title: config.meta.title,
     description: config.meta.description,
-    url: config.meta.url,
+    url: siteUrl,
     siteName: config.meta.name,
     locale: 'en_US',
     type: 'website',
@@ -30,6 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: config.meta.title,
     description: config.meta.description,
+    creator: config.meta.twitterHandle,
     ...(config.meta.ogImage ? { images: [config.meta.ogImage] } : {}),
   },
   robots: {
@@ -38,7 +44,7 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
   alternates: {
-    canonical: '/',
+    canonical: siteUrl,
   },
   icons: {
     icon: '/favicon.svg',
@@ -57,6 +63,36 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           {children}
         </ThemeProvider>
+        <Script
+          id="json-ld-person"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: config.meta.name,
+              url: siteUrl,
+              jobTitle: config.meta.jobTitle,
+              worksFor: {
+                '@type': 'Organization',
+                name: 'Showpad',
+                url: 'https://www.showpad.com',
+              },
+              description: config.meta.description,
+              sameAs: [
+                config.meta.github,
+                config.meta.linkedin,
+              ].filter(Boolean),
+              knowsAbout: [
+                'AI Engineering', 'LLM Orchestration', 'Deal Intelligence',
+                'React', 'TypeScript', 'Node.js', 'GraphQL', 'AWS',
+                'Neo4j', 'Amazon Neptune', 'Sales Enablement',
+              ],
+              address: { '@type': 'PostalAddress', addressLocality: 'Pune', addressCountry: 'IN' },
+            }),
+          }}
+        />
         {gaId && (
           <>
             <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
